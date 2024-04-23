@@ -62,7 +62,7 @@ class TrainingArguments(transformers.TrainingArguments):
     eval_and_save_results: bool = field(default=True)
     save_model: bool = field(default=False)
     seed: int = field(default=42)
-    
+
 
 def safe_save_model_for_hf_trainer(trainer: transformers.Trainer, output_dir: str):
     """Collects the state dict and dump to disk."""
@@ -225,6 +225,8 @@ def compute_metrics(eval_pred):
 def train():
     parser = transformers.HfArgumentParser((ModelArguments, DataArguments, TrainingArguments))
     model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+
+    torch.manual_seed(training_args.seed) # set seed
 
     # load tokenizer
     tokenizer = transformers.AutoTokenizer.from_pretrained(
