@@ -4,17 +4,16 @@ export TRAIN_PATH=..
 export LR=3e-5
 
 # Permute through the following settings:
-# RNG seed (42 times)
+# RNG seed (1-20)
 # fragment length
 # train:test ratio (80:10:10 original paper, try smth else)
 # change bases from RNA to DNA
-# MAX_LENGTH  (round up vs. down)
 
-for seed in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 # Test at least 20 seeds
+for seed in 4 5 6 7 8 9 10 #1 2 3 11 12 13 14 15 16 17 18 19 20
 do
     for task in gnra
     do
-        for fragment_length in 8, 10, 12, 14
+        for fragment_length in 10 12 14 #8
         do
             for train_ratio in 80
             do
