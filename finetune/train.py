@@ -62,6 +62,7 @@ class TrainingArguments(transformers.TrainingArguments):
     eval_and_save_results: bool = field(default=True)
     save_model: bool = field(default=False)
     seed: int = field(default=42)
+    # ddp_backend: str = field(default="gloo") # Required for Windows devices
 
 
 def safe_save_model_for_hf_trainer(trainer: transformers.Trainer, output_dir: str):
